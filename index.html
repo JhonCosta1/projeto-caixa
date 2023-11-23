@@ -13,18 +13,31 @@
     <title>SOMAR DIGITAL - Controle de Caixa & Estoque</title>
 </head>
 <body>
+    
+    <header class="caixa-login">
 
-    <header>
-        <h2>Acesso de Operador(a) de Caixa</h2>
-        <h3>CAIXA 02</h3>
-        <form action="">
-            <label for="login-funcionario">Registro de Operador(a):</label>
-            <input type="text" class="entrada-funcionario" placeholder="digite seu Registro de Operador">
-            <label for="senha-funcionario">Senha:</label>
-            <input type="text" class="senha-registro" placeholder="digite sua senha de acesso">
-            <button>Entrar</button>
-            <button>Recuperar senha</button>
-        </form>
+        <div class="folha-login">
+            <h2>Acesso de Operador(a) de Caixa</h2>
+            <h3>CAIXA 02</h3>
+            
+            <form action="">
+                <div class="formato-login">
+                    <label for="login-funcionario">Registro de Operador(a)</label>
+                    <input type="text" class="entrada-funcionario" maxlength="7" placeholder="digite seu Registro de Operador">
+                </div>
+                <div class="formato-login">
+                    <label for="senha-funcionario">Senha</label>
+                    <input type="password" class="senha-registro" maxlength="9" placeholder="digite sua senha de acesso">
+                </div>
+
+
+                <div class="caixa-btn">
+                    <button class="entrar-login">Entrar</button>
+                    <button class="recuperar-login">Recuperar senha</button>
+                </div>
+
+            </form>
+        </div>
     </header>
 
 
