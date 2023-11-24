@@ -16,7 +16,7 @@
     
     <header class="caixa-login">
 
-        <div class="folha-login">
+        <div class="folha-login n-show">
             <h2>Acesso de Operador(a) de Caixa</h2>
             <h3>CAIXA 02</h3>
             
@@ -35,9 +35,32 @@
                     <button class="entrar-login">Entrar</button>
                     <button class="recuperar-login">Recuperar senha</button>
                 </div>
-
             </form>
         </div>
+
+
+
+        <div class="folha-login" id="folha-recuperar">
+            <h2>Acesso de Operador(a) de Caixa</h2>
+            <h3>CAIXA 02</h3>
+            
+            <form action="">
+                <div class="formato-login">
+                    <label for="login-funcionario">Registro de Operador(a)</label>
+                    <input type="text" id="login-recuperar" class="entrada-funcionario" maxlength="7" placeholder="digite seu Registro de Operador">
+                </div>
+                <div class="formato-login">
+                    <label for="senha-funcionario">CPF</label>
+                    <input type="text" id="cpf-recuperar" class="senha-registro" maxlength="9" placeholder="digite seu CPF">
+                </div>
+
+
+                <div class="caixa-btn">
+                    <button class="recuperar-login" id="btn-recuperar">Recuperar senha</button>
+                </div>
+            </form>
+        </div>
+
     </header>
 
 

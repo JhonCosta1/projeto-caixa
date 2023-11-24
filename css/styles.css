@@ -7,6 +7,10 @@ label, input, button {
   margin-bottom: 7px;
 }
 
+#show {
+  display: none;
+}
+
 body {
   background: url("/img/background-img.jpg");
 }
@@ -59,6 +63,10 @@ input:focus {
 
 .recuperar-login {
   background-color: green;
+}
+
+.n-show {
+  display: none;
 }
 
 button {
