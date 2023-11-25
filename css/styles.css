@@ -69,6 +69,10 @@ input:focus {
   display: none;
 }
 
+h4 {
+  text-align: center;
+}
+
 button {
   width: 120%;
   height: 40px;
