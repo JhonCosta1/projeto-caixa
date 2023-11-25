@@ -23,8 +23,10 @@ class Recuperar {
             this.loginRecuperar = document.querySelector("#login-recuperar").value.trim();
             this.cpfRecuperar = document.querySelector("#cpf-recuperar").value.trim();
             e.preventDefault();
-            if(this.loginRecuperar !== ""){
-                console.log("oi")
+            if(this.loginRecuperar && this.cpfRecuperar !== ""){
+                //criar página de cadastrar funcionário
+                //criar objeto para salvar funcionarios criados no localstorage
+                //depois voltar aqui e criar lógica para validar se funcionário existe
             }
         })
     }
