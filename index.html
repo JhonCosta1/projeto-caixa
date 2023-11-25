@@ -16,7 +16,7 @@
     
     <header class="caixa-login">
 
-        <div class="folha-login" id="login-inicial">
+        <div class="folha-login n-show" id="login-inicial">
             <h2>Acesso de Operador(a) de Caixa</h2>
             <h3>CAIXA 02</h3>
             
@@ -34,6 +34,45 @@
                     <button class="entrar-login">Entrar</button>
                     <button class="recuperar-login" id="recuperar-redirecionar">Recuperar senha</button>
                     <button class="recuperar-login" id="cadastrar-redirecionar">Cadastrar novo funcionário(a)</button>
+                </div>
+            </form>
+        </div>
+
+
+
+
+        <div class="folha-login" id="login-cadastrar">
+            <h2>Cadastrar novo Operador(a)</h2>
+            
+            <form action="">
+                <div class="formato-login">
+                    <label for="">Nome completo</label>
+                    <input type="text" class="entrada-funcionario" maxlength="40" placeholder="digite o nome completo">
+                </div>
+
+                <div class="formato-login">
+                    <label for="">Cpf</label>
+                    <input type="text" class="entrada-funcionario" maxlength="12" placeholder="digite o cpf">
+                </div>
+
+                <div class="formato-login">
+                    <label for="">Data de nascimento</label>
+                    <input type="date" class="entrada-funcionario" maxlength="8">
+                </div>
+
+                <div class="formato-login">
+                    <label for="">Senha</label>
+                    <input type="password" class="senha-registro" maxlength="9" placeholder="digite a senha de acesso">
+                </div>
+
+                <div class="formato-login">
+                    <label for="">Confirme a Senha</label>
+                    <input type="password" class="senha-registro" maxlength="9" placeholder="digite a senha de acesso">
+                </div>
+
+                <div class="caixa-btn">
+                    <button class="entrar-login">Cadastrar</button>
+                    <button class="recuperar-login" id="voltar-login">Voltar</button>
                 </div>
             </form>
         </div>
@@ -58,10 +97,11 @@
 
                 <div class="caixa-btn">
                     <button class="recuperar-login" id="btn-recuperar">Confirmar</button>
-                    <button class="recuperar-login" id="btn-voltar">Voltar</button>
+                    <button class="recuperar-login" class="btn-voltar">Voltar</button>
                 </div>
             </form>
         </div>
+
 
     </header>
 

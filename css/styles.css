@@ -21,6 +21,7 @@ body {
   align-items: center;
   flex-direction: column;
   height: 85vh;
+  margin-top: 35px;
 }
 
 .folha-login, .formato-login, .caixa-btn {
