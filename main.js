@@ -6,6 +6,7 @@ class Recuperar {
 
     redirecionarRecuperar() {
         this.btnRedirecionar = document.querySelector("#recuperar-redirecionar");
+
         this.btnRedirecionar.addEventListener("click", (e) => {
             e.preventDefault();
             this.loginInicial = document.querySelector("#login-inicial");
@@ -17,12 +18,14 @@ class Recuperar {
 
     validarRecuperar() {
         this.btnRecuperar = document.querySelector("#btn-recuperar");
-        this.loginRecuperar = document.querySelector("#login-recuperar");
-        this.cpfRecuperar = document.querySelector("#cpf-recuperar")
-
+        
         this.btnRecuperar.addEventListener("click", (e)=>{
+            this.loginRecuperar = document.querySelector("#login-recuperar").value.trim();
+            this.cpfRecuperar = document.querySelector("#cpf-recuperar").value.trim();
             e.preventDefault();
-            
+            if(this.loginRecuperar !== ""){
+                console.log("oi")
+            }
         })
     }
 }
