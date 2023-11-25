@@ -22,9 +22,8 @@ class Recuperar {
 
         this.btnRecuperar.addEventListener("click", (e)=>{
             e.preventDefault();
-            console.log("oi")
+            
         })
     }
 }
-
 const redirecionar = new Recuperar()
