@@ -1,4 +1,4 @@
-class Recuperar {
+class RecuperarSenha {
     constructor() {
         this.validarRecuperar();
     }
@@ -18,9 +18,9 @@ class Recuperar {
         })
     }
 }
-const redirecionar = new Recuperar();
+const recuperarSenha = new RecuperarSenha();
 
-class Buttonretornar {
+class RetornarTelaInicialBtn {
     constructor() {
         this.redirecionarRecuperar();
         
@@ -31,7 +31,8 @@ class Buttonretornar {
         this.folhaRecuperar = document.querySelector("#folha-recuperar");
         this.loginCadastrar = document.querySelector("#login-cadastrar");
         this.btnRedirecionar = document.querySelector("#recuperar-redirecionar");
-        this.btnVoltar = document.querySelector("#btn-voltar");
+        this.btnVoltar = [...document.querySelectorAll(".btn-retorno")];
+        this.btnCadastrar = document.querySelector("#cadastrar-redirecionar");
 
         this.btnRedirecionar.addEventListener("click", (e) => {
             e.preventDefault();
@@ -40,12 +41,21 @@ class Buttonretornar {
             this.folhaRecuperar.classList.remove("n-show");
         });
 
-        this.btnVoltar.addEventListener("click", (e) => {
+        this.btnVoltar.forEach((el)=>{
+            el.addEventListener("click", (e)=>{
+                e.preventDefault()
+                this.loginInicial.classList.remove("n-show");
+                this.loginCadastrar.classList.add("n-show");
+                this.folhaRecuperar.classList.add("n-show");
+            })
+        })
+
+        this.btnCadastrar.addEventListener("click", (e) => {
             e.preventDefault();
-            this.loginInicial.classList.remove("n-show");
-            this.loginCadastrar.classList.add("n-show");
+            this.loginInicial.classList.add("n-show");
+            this.loginCadastrar.classList.remove("n-show");
             this.folhaRecuperar.classList.add("n-show");
         });
     }
 }
-let retornarInicial = new Buttonretornar();
+let retornarInicial = new RetornarTelaInicialBtn();
