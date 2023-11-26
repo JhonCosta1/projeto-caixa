@@ -20,6 +20,56 @@ class RecuperarSenha {
 }
 const recuperarSenha = new RecuperarSenha();
 
+
+class Operador {
+    constructor(){
+        this.criarOperador();
+        this.quadro = JSON.parse(localStorage.getItem('operadores')) || [];
+    }
+
+    salvarNoLocalStorage() {
+        localStorage.setItem('operadores', JSON.stringify(this.quadro));
+    }
+
+    criarOperador() {
+        this.btnCadastrar = document.querySelector("#cadastrar-operador")
+        this.btnCadastrar.addEventListener("click", (e)=>{
+            e.preventDefault();
+            this.nome = document.querySelector("#rec-nome").value.trim();
+            this.cpf = document.querySelector("#rec-cpf").value.trim();
+            this.dataNascimento = document.querySelector("#rec-nascimento").value.trim();
+            this.senha = document.querySelector("#rec-senha").value.trim();
+            this.senhaValidar = document.querySelector("#rec-senha2").value.trim();
+
+            if(!this.validarCpf(this.cpf)) {
+                const novoOperador = {
+                    nome: this.nome,
+                    cpf: this.cpf,
+                    dataNascimento: this.dataNascimento,
+                    senha: this.senha,
+                    senhaValidar: this.senhaValidar
+                };
+    
+                this.quadro.push(novoOperador);
+                this.salvarNoLocalStorage();
+            } else {
+                console.log("cpf cadastrado,")
+            }
+        });
+    }
+
+    validarCpf(cpf) {
+        return this.quadro.some(operador => operador.cpf === cpf);
+    }
+}
+
+const operador = new Operador()
+
+
+
+
+
+
 class RetornarTelaInicialBtn {
     constructor() {
         this.redirecionarRecuperar();
