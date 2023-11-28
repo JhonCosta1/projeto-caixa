@@ -49,21 +49,41 @@ class Operador {
                 this.senha !== "" &&
                 this.senhaValidar !== ""
                 ) {
-                    const novoOperador = {
-                        nome: this.nome,
-                        cpf: this.cpf,
-                        dataNascimento: this.dataNascimento,
-                        senha: this.senha,
-                        senhaValidar: this.senhaValidar
-                    };
-                    this.quadro.push(novoOperador);
-                    this.salvarNoLocalStorage();
+
+                    if(this.senha === this.senhaValidar) {
+                        const novoOperador = {
+                            token: this.gerarToken(),
+                            nome: this.nome,
+                            cpf: this.cpf,
+                            dataNascimento: this.dataNascimento,
+                            senha: this.senha,
+                            senhaValidar: this.senhaValidar,
+                            
+                        };
+                        this.quadro.push(novoOperador);
+                        this.salvarNoLocalStorage();
+                    } else {
+                        console.log("senhas difentes")
+                    }
+
             }
         });
     }
 
     validarCpf(cpf) {
         return this.quadro.some(operador => operador.cpf === cpf);
+    }
+
+    gerarToken() {
+        const caracteresPermitidos = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        let tokenGerado = '';
+    
+        for (let i = 0; i < 15; i++) {
+            const indiceAleatorio = Math.floor(Math.random() * caracteresPermitidos.length);
+            tokenGerado += caracteresPermitidos.charAt(indiceAleatorio);
+        }
+    
+        return tokenGerado;
     }
 }
 
