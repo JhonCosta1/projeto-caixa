@@ -41,19 +41,23 @@ class Operador {
             this.senha = document.querySelector("#rec-senha").value.trim();
             this.senhaValidar = document.querySelector("#rec-senha2").value.trim();
 
-            if(!this.validarCpf(this.cpf)) {
-                const novoOperador = {
-                    nome: this.nome,
-                    cpf: this.cpf,
-                    dataNascimento: this.dataNascimento,
-                    senha: this.senha,
-                    senhaValidar: this.senhaValidar
-                };
-    
-                this.quadro.push(novoOperador);
-                this.salvarNoLocalStorage();
-            } else {
-                console.log("cpf cadastrado,")
+            if(this.validarCpf(this.cpf)) {
+                console.log("CPF EXISTE")
+            } else if(this.nome !== "" &&
+                this.cpf !== "" &&
+                this.dataNascimento !== "" &&
+                this.senha !== "" &&
+                this.senhaValidar !== ""
+                ) {
+                    const novoOperador = {
+                        nome: this.nome,
+                        cpf: this.cpf,
+                        dataNascimento: this.dataNascimento,
+                        senha: this.senha,
+                        senhaValidar: this.senhaValidar
+                    };
+                    this.quadro.push(novoOperador);
+                    this.salvarNoLocalStorage();
             }
         });
     }
