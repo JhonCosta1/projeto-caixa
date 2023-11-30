@@ -1,25 +1,3 @@
-class RecuperarSenha {
-    constructor() {
-        this.validarRecuperar();
-    }
-
-    validarRecuperar() {
-        this.btnRecuperar = document.querySelector("#btn-recuperar");
-
-        this.btnRecuperar.addEventListener("click", (e)=>{
-            this.loginRecuperar = document.querySelector("#login-recuperar").value.trim();
-            this.cpfRecuperar = document.querySelector("#cpf-recuperar").value.trim();
-            e.preventDefault();
-            if(this.loginRecuperar && this.cpfRecuperar !== ""){
-                //criar página de cadastrar funcionário
-                //criar objeto para salvar funcionarios criados no localstorage
-                //depois voltar aqui e criar lógica para validar se funcionário existe
-            }
-        })
-    }
-}
-const recuperarSenha = new RecuperarSenha();
-
 
 class Operador {
     constructor(){
@@ -40,38 +18,53 @@ class Operador {
             this.dataNascimento = document.querySelector("#rec-nascimento").value.trim();
             this.senha = document.querySelector("#rec-senha").value.trim();
             this.senhaValidar = document.querySelector("#rec-senha2").value.trim();
+            this.h3modal = document.querySelector(".cpf-modal")
 
-            if(this.validarCpf(this.cpf)) {
-                console.log("CPF EXISTE")
-            } else if(this.nome !== "" &&
+            if (
+                this.nome !== "" &&
                 this.cpf !== "" &&
                 this.dataNascimento !== "" &&
                 this.senha !== "" &&
                 this.senhaValidar !== ""
-                ) {
+            ) {
 
-                    if(this.senha === this.senhaValidar) {
-                        const novoOperador = {
-                            token: this.gerarToken(),
-                            nome: this.nome,
-                            cpf: this.cpf,
-                            dataNascimento: this.dataNascimento,
-                            senha: this.senha,
-                            senhaValidar: this.senhaValidar,
-                            
-                        };
-                        this.quadro.push(novoOperador);
-                        this.salvarNoLocalStorage();
-                    } else {
-                        console.log("senhas difentes")
-                    }
-
+                if(this.validarCpf(this.cpf)){
+                    this.h3modal.classList.remove("n-show")
+                    this.h3modal.innerHTML = "Lamento, CPF já cadastrado"
+                } else if (this.senha !== this.senhaValidar) {
+                    this.h3modal.innerHTML = "Lamento, senhas divergentes"
+                } else {
+                    this.h3modal.innerHTML = "Novo operador cadastrado com sucesso"
+                    const novoOperador = {
+                        token: this.gerarToken(),
+                        registroOperador: Math.random().toString(36).slice(2, 8),
+                        nome: this.nome,
+                        cpf: this.cpf,
+                        dataNascimento: this.dataNascimento,
+                        senha: this.senha,
+                        senhaValidar: this.senhaValidar,
+                    };
+                    this.quadro.push(novoOperador);
+                    this.salvarNoLocalStorage();
+                    this.limparCamposCadastro();
+                    this.h3modal.classList.remove("n-show");
+                }
             }
         });
     }
 
     validarCpf(cpf) {
         return this.quadro.some(operador => operador.cpf === cpf);
+    }
+
+    limparCamposCadastro() {
+        this.nome = document.querySelector("#rec-nome").value = "";
+        this.cpf = document.querySelector("#rec-cpf").value = "";
+        this.dataNascimento = document.querySelector("#rec-nascimento").value = "";
+        this.senha = document.querySelector("#rec-senha").value = "";
+        this.senhaValidar = document.querySelector("#rec-senha2").value = "";
+        this.h3modal = document.querySelector(".cpf-modal");
+        this.h3modal.classList.add("n-show");
     }
 
     gerarToken() {
@@ -86,16 +79,11 @@ class Operador {
         return tokenGerado;
     }
 }
-
 const operador = new Operador()
 
-
-
-
-
-
-class RetornarTelaInicialBtn {
+class RetornarTelaInicialBtn extends Operador{
     constructor() {
+        super();
         this.redirecionarRecuperar();
         
     }
@@ -121,6 +109,7 @@ class RetornarTelaInicialBtn {
                 this.loginInicial.classList.remove("n-show");
                 this.loginCadastrar.classList.add("n-show");
                 this.folhaRecuperar.classList.add("n-show");
+                this.limparCamposCadastro();
             })
         })
 
@@ -133,3 +122,25 @@ class RetornarTelaInicialBtn {
     }
 }
 let retornarInicial = new RetornarTelaInicialBtn();
+
+class RecuperarSenha extends RetornarTelaInicialBtn{
+    constructor() {
+        super();
+        this.validarRecuperar();
+    }
+
+    validarRecuperar() {
+        this.btnRecuperar = document.querySelector("#btn-recuperar");
+
+        this.btnRecuperar.addEventListener("click", (e)=>{
+            this.loginRecuperar = document.querySelector("#login-recuperar").value.trim();
+            this.cpfRecuperar = document.querySelector("#cpf-recuperar").value.trim();
+            e.preventDefault();
+            if(this.loginRecuperar && this.cpfRecuperar !== ""){
+                
+                //depois voltar aqui e criar lógica para validar se funcionário existe
+            }
+        })
+    }
+}
+const recuperarSenha = new RecuperarSenha();
