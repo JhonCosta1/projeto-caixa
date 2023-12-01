@@ -57,12 +57,15 @@ class Operador {
         return this.quadro.some(operador => operador.cpf === cpf);
     }
 
+
     limparCamposCadastro() {
         this.nome = document.querySelector("#rec-nome").value = "";
         this.cpf = document.querySelector("#rec-cpf").value = "";
         this.dataNascimento = document.querySelector("#rec-nascimento").value = "";
         this.senha = document.querySelector("#rec-senha").value = "";
         this.senhaValidar = document.querySelector("#rec-senha2").value = "";
+        this.codigoOperadorRecuperar = document.querySelector("#login-recuperar").value = "";
+        this.cpfRecuperar = document.querySelector("#cpf-recuperar").value = "";
         this.h3modal = document.querySelector(".cpf-modal");
         this.h3modal.classList.add("n-show");
     }
@@ -109,6 +112,8 @@ class RetornarTelaInicialBtn extends Operador{
                 this.loginInicial.classList.remove("n-show");
                 this.loginCadastrar.classList.add("n-show");
                 this.folhaRecuperar.classList.add("n-show");
+                this.h5modalR = document.querySelector(".tituloR");
+                this.h5modalR.classList.add("n-show");
                 this.limparCamposCadastro();
             })
         })
@@ -118,12 +123,13 @@ class RetornarTelaInicialBtn extends Operador{
             this.loginInicial.classList.add("n-show");
             this.loginCadastrar.classList.remove("n-show");
             this.folhaRecuperar.classList.add("n-show");
+            this.limparCamposCadastro();
         });
     }
 }
 let retornarInicial = new RetornarTelaInicialBtn();
 
-class RecuperarSenha extends RetornarTelaInicialBtn{
+class RecuperarSenha extends RetornarTelaInicialBtn {
     constructor() {
         super();
         this.validarRecuperar();
@@ -131,16 +137,29 @@ class RecuperarSenha extends RetornarTelaInicialBtn{
 
     validarRecuperar() {
         this.btnRecuperar = document.querySelector("#btn-recuperar");
-
-        this.btnRecuperar.addEventListener("click", (e)=>{
-            this.loginRecuperar = document.querySelector("#login-recuperar").value.trim();
-            this.cpfRecuperar = document.querySelector("#cpf-recuperar").value.trim();
+        this.btnRecuperar.addEventListener("click", (e) => {
             e.preventDefault();
-            if(this.loginRecuperar && this.cpfRecuperar !== ""){
-                
-                //depois voltar aqui e criar lógica para validar se funcionário existe
+            this.codigoOperadorRecuperar = document.querySelector("#login-recuperar").value.trim();
+            this.cpfRecuperar = document.querySelector("#cpf-recuperar").value.trim();
+            this.h5modalR = document.querySelector(".tituloR");
+            if (this.cpfRecuperar !== "") {
+                if(this.validarRecuperacao(this.cpfRecuperar, this.codigoOperadorRecuperar)) {
+                    this.h5modalR.innerHTML = "Senha enviada para seu Supervisor, contate-o para recebê-la";
+                    this.h5modalR.classList.remove("n-show");
+                    this.limparCamposCadastro();
+                } else {
+                    this.h5modalR.innerHTML = "Dados divergentes ou não existem";
+                    this.h5modalR.classList.remove("n-show");
+                }
+            } else {
+                this.h5modalR.innerHTML = "Por favor, preencha todos os campos";
+                this.h5modalR.classList.remove("n-show");
             }
-        })
-    }
+        });
+    };
+
+    validarRecuperacao(cpfRecuperar, codigoOperadorRecuperar) {
+        return this.quadro.find(operador => operador.cpf === cpfRecuperar && operador.registroOperador === codigoOperadorRecuperar)
+    };
 }
 const recuperarSenha = new RecuperarSenha();
