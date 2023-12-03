@@ -1,4 +1,3 @@
-
 class Operador {
     constructor(){
         this.criarOperador();
@@ -83,8 +82,7 @@ class Operador {
     }
 }
 const operador = new Operador()
-
-class RetornarTelaInicialBtn extends Operador{
+class RetornarTelaInicialBtn extends Operador {
     constructor() {
         super();
         this.redirecionarRecuperar();
@@ -128,7 +126,6 @@ class RetornarTelaInicialBtn extends Operador{
     }
 }
 let retornarInicial = new RetornarTelaInicialBtn();
-
 class RecuperarSenha extends RetornarTelaInicialBtn {
     constructor() {
         super();
@@ -163,3 +160,48 @@ class RecuperarSenha extends RetornarTelaInicialBtn {
     };
 }
 const recuperarSenha = new RecuperarSenha();
+
+class ValidarAcesso extends RecuperarSenha {
+    constructor(){
+        super();
+        this.validarDadosLogin();
+    }
+
+    validarDadosLogin() {
+        this.btnEntrar = document.querySelector(".entrar-login");
+        this.modalInicial = document.querySelector(".login-modal");
+
+        this.btnEntrar.addEventListener("click", (e)=>{
+            e.preventDefault();
+            this.operadorLogin = document.querySelector(".entrada-funcionario").value.trim();
+            this.operadorSenha = document.querySelector(".senha-registro").value.trim();
+
+            if(this.operadorLogin !== "" && this.operadorSenha !== "") {
+                if(this.validarAcesso(this.operadorLogin, this.operadorSenha)) {
+                    this.modalInicial.innerHTML = "Acesso liberado!"
+                    this.modalInicial.classList.remove("n-show")
+                    this.redirecionarAcesso();
+                } else {
+                    this.modalInicial.innerHTML = "Dados incorretos ou não existem"
+                    this.modalInicial.classList.remove("n-show")
+                }
+            } else {
+                this.modalInicial.innerHTML = "Preencha todos os dados"
+                this.modalInicial.classList.remove("n-show")
+            }
+        })
+
+    };
+
+    validarAcesso(operadorLogin, operadorSenha) {
+        return this.quadro.find(operador => operador.registroOperador === operadorLogin && operador.senha === operadorSenha)
+    };
+
+    redirecionarAcesso() {
+            let a = document.createElement("a")
+            a.href = "homepage.html"
+            a.target = "_self"
+            a.click()
+    };
+}
+const validarAcesso = new ValidarAcesso();
