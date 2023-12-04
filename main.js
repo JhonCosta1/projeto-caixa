@@ -17,7 +17,7 @@ class Operador {
             this.dataNascimento = document.querySelector("#rec-nascimento").value.trim();
             this.senha = document.querySelector("#rec-senha").value.trim();
             this.senhaValidar = document.querySelector("#rec-senha2").value.trim();
-            this.h3modal = document.querySelector(".cpf-modal")
+            this.h3modal = document.querySelector(".modal-cadastroR")
 
             if (
                 this.nome !== "" &&
@@ -26,7 +26,6 @@ class Operador {
                 this.senha !== "" &&
                 this.senhaValidar !== ""
             ) {
-
                 if(this.validarCpf(this.cpf)){
                     this.h3modal.classList.remove("n-show")
                     this.h3modal.innerHTML = "Lamento, CPF já cadastrado"
@@ -34,6 +33,7 @@ class Operador {
                     this.h3modal.innerHTML = "Lamento, senhas divergentes"
                 } else {
                     this.h3modal.innerHTML = "Novo operador cadastrado com sucesso"
+                    this.h3modal.classList.remove("n-show");
                     const novoOperador = {
                         token: this.gerarToken(),
                         registroOperador: Math.random().toString(36).slice(2, 8),
@@ -46,8 +46,10 @@ class Operador {
                     this.quadro.push(novoOperador);
                     this.salvarNoLocalStorage();
                     this.limparCamposCadastro();
-                    this.h3modal.classList.remove("n-show");
                 }
+            } else {
+                this.h3modal.classList.remove("n-show")
+                this.h3modal.innerHTML = "Preencha todos os campos"
             }
         });
     }
@@ -110,8 +112,8 @@ class RetornarTelaInicialBtn extends Operador {
                 this.loginInicial.classList.remove("n-show");
                 this.loginCadastrar.classList.add("n-show");
                 this.folhaRecuperar.classList.add("n-show");
-                this.h5modalR = document.querySelector(".tituloR");
                 this.h5modalR.classList.add("n-show");
+                this.h3modal.classList.add("n-show");
                 this.limparCamposCadastro();
             })
         })
@@ -160,7 +162,6 @@ class RecuperarSenha extends RetornarTelaInicialBtn {
     };
 }
 const recuperarSenha = new RecuperarSenha();
-
 class ValidarAcesso extends RecuperarSenha {
     constructor(){
         super();
@@ -178,8 +179,8 @@ class ValidarAcesso extends RecuperarSenha {
 
             if(this.operadorLogin !== "" && this.operadorSenha !== "") {
                 if(this.validarAcesso(this.operadorLogin, this.operadorSenha)) {
-                    this.modalInicial.innerHTML = "Acesso liberado!"
-                    this.modalInicial.classList.remove("n-show")
+                    this.modalInicial.innerHTML = "Acesso liberado!";
+                    this.modalInicial.classList.remove("n-show");
                     this.redirecionarAcesso();
                 } else {
                     this.modalInicial.innerHTML = "Dados incorretos ou não existem"
@@ -198,10 +199,10 @@ class ValidarAcesso extends RecuperarSenha {
     };
 
     redirecionarAcesso() {
-            let a = document.createElement("a")
-            a.href = "homepage.html"
-            a.target = "_self"
-            a.click()
+        let a = document.createElement("a")
+        a.href = "homepage.html"
+        a.target = "_self"
+        a.click()
     };
 }
 const validarAcesso = new ValidarAcesso();
