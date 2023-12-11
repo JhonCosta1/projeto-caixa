@@ -83,7 +83,7 @@ class Operador {
         return tokenGerado;
     }
 }
-const operador = new Operador()
+const operador = new Operador();
 class RetornarTelaInicialBtn extends Operador {
     constructor() {
         super();
@@ -112,7 +112,6 @@ class RetornarTelaInicialBtn extends Operador {
                 this.loginInicial.classList.remove("n-show");
                 this.loginCadastrar.classList.add("n-show");
                 this.folhaRecuperar.classList.add("n-show");
-                this.h5modalR.classList.add("n-show");
                 this.h3modal.classList.add("n-show");
                 this.limparCamposCadastro();
             })
@@ -127,7 +126,7 @@ class RetornarTelaInicialBtn extends Operador {
         });
     }
 }
-let retornarInicial = new RetornarTelaInicialBtn();
+const retornarInicial = new RetornarTelaInicialBtn();
 class RecuperarSenha extends RetornarTelaInicialBtn {
     constructor() {
         super();
@@ -195,7 +194,7 @@ class ValidarAcesso extends RecuperarSenha {
     };
 
     validarAcesso(operadorLogin, operadorSenha) {
-        return this.quadro.find(operador => operador.registroOperador === operadorLogin && operador.senha === operadorSenha)
+        return this.quadro.find(operador => operador.cpf === operadorLogin && operador.senha === operadorSenha)
     };
 
     redirecionarAcesso() {
