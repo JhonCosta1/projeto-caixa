@@ -31,6 +31,7 @@ class Operador {
                     this.h3modal.innerHTML = "Lamento, CPF já cadastrado"
                 } else if (this.senha !== this.senhaValidar) {
                     this.h3modal.innerHTML = "Lamento, senhas divergentes"
+                    this.h3modal.classList.remove("n-show");
                 } else {
                     this.h3modal.innerHTML = "Novo operador cadastrado com sucesso"
                     this.h3modal.classList.remove("n-show");
@@ -48,8 +49,10 @@ class Operador {
                     this.limparCamposCadastro();
                 }
             } else {
-                this.h3modal.classList.remove("n-show")
-                this.h3modal.innerHTML = "Preencha todos os campos"
+                setTimeout(()=>{
+                    this.h3modal.classList.remove("n-show")
+                    this.h3modal.innerHTML = "Preencha todos os campos"
+                }, 3000);
             }
         });
     }
@@ -205,3 +208,32 @@ class ValidarAcesso extends RecuperarSenha {
     };
 }
 const validarAcesso = new ValidarAcesso();
+
+class ValidarUsuarioLogado extends ValidarAcesso {
+    constructor() {
+        super();
+    }
+
+    redirecionarSaida() {
+        let a = document.createElement("a")
+        a.href = "index.html"
+        a.target = "_self"
+        a.click()
+    };
+
+    validarSaida() {
+        this.btnSair = document.querySelector(".btn-encerrar")
+        this.btnSair.addEventListener("click", (e)=>{
+            e.preventDefault();
+            localStorage.removeItem('token')
+        })
+
+        if(localStorage.getItem('token') == null) {
+            alert('Você deve estar logado para acessar esta página!')
+            this.redirecionarSaida()
+        }
+    };
+};
+
+const validarLogout = new ValidarUsuarioLogado();
+
