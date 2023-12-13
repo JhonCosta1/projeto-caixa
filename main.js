@@ -184,6 +184,8 @@ class ValidarAcesso extends RecuperarSenha {
                     this.modalInicial.innerHTML = "Acesso liberado!";
                     this.modalInicial.classList.remove("n-show");
                     this.redirecionarAcesso();
+                    this.tokenValidar = Math.random().toString(13).substring(2);
+                    localStorage.setItem('token', this.tokenValidar);
                 } else {
                     this.modalInicial.innerHTML = "Dados incorretos ou não existem"
                     this.modalInicial.classList.remove("n-show")
@@ -208,32 +210,4 @@ class ValidarAcesso extends RecuperarSenha {
     };
 }
 const validarAcesso = new ValidarAcesso();
-
-class ValidarUsuarioLogado extends ValidarAcesso {
-    constructor() {
-        super();
-    }
-
-    redirecionarSaida() {
-        let a = document.createElement("a")
-        a.href = "index.html"
-        a.target = "_self"
-        a.click()
-    };
-
-    validarSaida() {
-        this.btnSair = document.querySelector(".btn-encerrar")
-        this.btnSair.addEventListener("click", (e)=>{
-            e.preventDefault();
-            localStorage.removeItem('token')
-        })
-
-        if(localStorage.getItem('token') == null) {
-            alert('Você deve estar logado para acessar esta página!')
-            this.redirecionarSaida()
-        }
-    };
-};
-
-const validarLogout = new ValidarUsuarioLogado();
 
