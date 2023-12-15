@@ -2,7 +2,7 @@ class VoltarMenu{
     constructor() {
         this.redirecionarEscolha();
     }
-    
+
     redirecionar(direcao) {
         let a = document.createElement("a")
         a.href = direcao
