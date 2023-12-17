@@ -17,7 +17,6 @@ body {
 
 .caixa-login {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 85vh;
@@ -83,7 +82,7 @@ h4 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 85vh;
+  height: 60vh;
   margin-top: 35px;
   background-color: white;
   border-radius: 10px;
