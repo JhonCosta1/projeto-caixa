@@ -10,14 +10,13 @@ class Operador {
 
     criarOperador() {
         this.btnCadastrar = document.querySelector("#cadastrar-operador")
-        this.btnCadastrar.addEventListener("click", (e)=>{
-            e.preventDefault();
+        this.btnCadastrar.addEventListener("click", ()=>{
             this.nome = document.querySelector("#rec-nome").value.trim();
             this.cpf = document.querySelector("#rec-cpf").value.trim();
             this.dataNascimento = document.querySelector("#rec-nascimento").value.trim();
             this.senha = document.querySelector("#rec-senha").value.trim();
             this.senhaValidar = document.querySelector("#rec-senha2").value.trim();
-            this.h3modal = document.querySelector(".modal-cadastroR")
+            this.h3modal = document.querySelector(".modal-cadastroR");
 
             if (
                 this.nome !== "" &&
@@ -164,11 +163,15 @@ class RecuperarSenha extends RetornarTelaInicialBtn {
     };
 }
 const recuperarSenha = new RecuperarSenha();
-class ValidarAcesso extends RecuperarSenha {
+class ValidarAcesso extends Operador {
     constructor(){
         super();
         this.validarDadosLogin();
     }
+
+    validarAcesso(operadorLogin, operadorSenha) {
+        return this.quadro.find(operador => operador.cpf === operadorLogin && operador.senha === operadorSenha)
+    };
 
     validarDadosLogin() {
         this.btnEntrar = document.querySelector(".entrar-login");
@@ -196,10 +199,6 @@ class ValidarAcesso extends RecuperarSenha {
             }
         })
 
-    };
-
-    validarAcesso(operadorLogin, operadorSenha) {
-        return this.quadro.find(operador => operador.cpf === operadorLogin && operador.senha === operadorSenha)
     };
 
     redirecionarAcesso() {
