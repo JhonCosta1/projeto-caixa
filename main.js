@@ -10,7 +10,8 @@ class Operador {
 
     criarOperador() {
         this.btnCadastrar = document.querySelector("#cadastrar-operador")
-        this.btnCadastrar.addEventListener("click", ()=>{
+        this.btnCadastrar.addEventListener("click", (e)=>{
+            e.preventDefault();
             this.nome = document.querySelector("#rec-nome").value.trim();
             this.cpf = document.querySelector("#rec-cpf").value.trim();
             this.dataNascimento = document.querySelector("#rec-nascimento").value.trim();
@@ -49,8 +50,8 @@ class Operador {
                 }
             } else {
                 setTimeout(()=>{
-                    this.h3modal.classList.remove("n-show")
-                    this.h3modal.innerHTML = "Preencha todos os campos"
+                    this.h3modal.classList.remove("n-show");
+                    this.h3modal.innerHTML = "Preencha todos os campos";
                 }, 3000);
             }
         });
@@ -99,7 +100,7 @@ class RetornarTelaInicialBtn extends Operador {
         this.loginCadastrar = document.querySelector("#login-cadastrar");
         this.btnRedirecionar = document.querySelector("#recuperar-redirecionar");
         this.btnVoltar = [...document.querySelectorAll(".btn-retorno")];
-        this.btnCadastrar = document.querySelector("#cadastrar-redirecionar");
+        this.btnCadastrar1 = document.querySelector("#cadastrar-redirecionar");
 
         this.btnRedirecionar.addEventListener("click", (e) => {
             e.preventDefault();
@@ -109,8 +110,7 @@ class RetornarTelaInicialBtn extends Operador {
         });
 
         this.btnVoltar.forEach((el)=>{
-            el.addEventListener("click", (e)=>{
-                e.preventDefault()
+            el.addEventListener("click", ()=>{
                 this.loginInicial.classList.remove("n-show");
                 this.loginCadastrar.classList.add("n-show");
                 this.folhaRecuperar.classList.add("n-show");
@@ -119,7 +119,7 @@ class RetornarTelaInicialBtn extends Operador {
             })
         })
 
-        this.btnCadastrar.addEventListener("click", (e) => {
+        this.btnCadastrar1.addEventListener("click", (e) => {
             e.preventDefault();
             this.loginInicial.classList.add("n-show");
             this.loginCadastrar.classList.remove("n-show");
