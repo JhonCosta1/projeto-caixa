@@ -13,9 +13,36 @@
     <title>SOMAR DIGITAL - Controle de Caixa & Estoque</title>
 </head>
 <body>
-    <div id="quadro-estoque">
-        <h2 class="h2-titulo">Cadastrar Novo Produto</h2>
-    </div>
+    <h2 class="h2-titulo h2-estoque">Cadastrar Novo Produto</h2>
+        <div class="folha-estoque">
+            <h3 class="estoque-modal n-show"></h3>
+            <form action="">
+                <div class="formato-estoque">
+                    <label for="">Nome do produto</label>
+                    <input type="text" class="nome-produto" maxlength="30" placeholder="digite o nome do produto">
+                </div>
+
+                <div class="formato-estoque">
+                    <label for="">Peso</label>
+                    <input type="text" class="peso-produto" maxlength="12" placeholder="digite o peso">
+                </div>
+
+                <div class="formato-estoque">
+                    <label for="">Validade</label>
+                    <input type="date" class="validade-produto">
+                </div>
+
+                <div class="formato-estoque">
+                    <label for="">Quantidade</label>
+                    <input type="password" class="quantidade-produto" maxlength="9" placeholder="digite a quantidade">
+                </div>
+
+                <div class="caixa-btn">
+                    <button id="cadastrar-produto">Cadastrar</button>
+                </div>
+            </form>
+        </div>
+    
     <div class="voltar-area">
         <button class="btn-sistema btn-voltarSelecao2 btn-voltarSelecao">Voltar</button>
     </div>

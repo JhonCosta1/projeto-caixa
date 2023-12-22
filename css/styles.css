@@ -23,7 +23,7 @@ body {
   margin-top: 35px;
 }
 
-.folha-login, .formato-login, .caixa-btn {
+.folha-login, .formato-login, .caixa-btn, .formato-estoque, .folha-estoque {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@ body {
   width: 100%;
 }
 
-.folha-login {
+.folha-login, .folha-estoque {
   padding-top: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
@@ -143,10 +143,6 @@ h4 {
   flex-direction: column;
 }
 
-.btn-voltarSelecao2 {
-  margin-top: 10px;
-}
-
 .foto-produto {
   width: 60%;
 }
@@ -157,6 +153,23 @@ li {
 
 .conteudo-produto {
   margin-right: 35px;
+}
+
+.dados-produto {
+  background-color: rgba(194, 223, 223, 0.7607843137);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.cpf-modal, .estoque-modal {
+  padding: 10px;
+  border-radius: 7px;
+  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+.titulo-cadastro {
+  padding: 0px;
+  margin: 0px;
 }
 
 button {
@@ -180,17 +193,6 @@ button {
 
 #cadastrar-redirecionar {
   background-color: #2a0ea5;
-}
-
-.cpf-modal {
-  padding: 10px;
-  border-radius: 7px;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.5);
-}
-
-.titulo-cadastro {
-  padding: 0px;
-  margin: 0px;
 }
 
 .btn-sistema {
@@ -220,6 +222,10 @@ button {
 
 .btn-voltarSelecao2 {
   text-align: center;
+}
+
+.btn-voltarSelecao2 {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=styles.css.map */
