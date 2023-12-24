@@ -1,4 +1,3 @@
-
 class ValidarUsuarioLogado {
     constructor() {
         this.validarSaida();
