@@ -1,5 +1,5 @@
 # PROJETO FRENTE DE CAIXA
-## TREINAR P.O.O
+## TREINAR P.O.O e Mobile first
 <p>
   1) Validar formulário
   2) Criar operador e salvar no localstorage
