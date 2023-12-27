@@ -12,12 +12,12 @@ class CadastrarProduto{
     enviarProutos() {
         this.btnCadastarProduto = document.querySelector(".cadastrar-produto");
 
-        this.btnCadastarProduto.addEventListener("click", (e)=>{
-            e.preventDefault();
+        this.btnCadastarProduto.addEventListener("click", ()=>{
             this.nomeProduto = document.querySelector(".nome-produto").value.trim();
             this.peso = document.querySelector(".peso-produto").value.trim();
             this.validade = document.querySelector(".validade-produto").value.trim();
             this.quantidade = document.querySelector(".quantidade-produto").value.trim();
+            this.codigo = document.querySelector(".codigo-produto").value.trim();
             this.h3modalEstoque = document.querySelector(".estoque-modal");
 
             if (
@@ -32,7 +32,8 @@ class CadastrarProduto{
                     nome: this.nomeProduto,
                     peso: this.peso,
                     validade: this.validade,
-                    quantidade: this.quantidade
+                    quantidade: this.quantidade,
+                    codigo: this.codigo,
                     };
                     this.estoque.push(novoProduto);
                     this.salvarNoLocalStorageEstoque();
@@ -41,7 +42,9 @@ class CadastrarProduto{
                 this.h3modalEstoque.classList.remove("n-show");
                 this.h3modalEstoque.innerHTML = "Preencha todos os campos";
             }
+
         });
+
     }
 }
 const cadastarProduto = new CadastrarProduto();
