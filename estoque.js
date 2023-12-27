@@ -44,10 +44,14 @@ class CriarCardProduto{
             this.liQ = document.createElement("li")
             this.liQ.classList.add("dados-produto")
             this.liQ.innerHTML = `Quantidade: ${produto.quantidade}`
+            this.liC = document.createElement("li")
+            this.liC.classList.add("dados-produto")
+            this.liC.innerHTML = `Código: ${produto.codigo}`
             this.ul.appendChild(this.liP)
             this.ul.appendChild(this.liS)
             this.ul.appendChild(this.liT)
             this.ul.appendChild(this.liQ)
+            this.ul.appendChild(this.liC)
             this.divPrincipal.appendChild(this.ul);
             this.areaProdutos.appendChild(this.divPrincipal);
 
